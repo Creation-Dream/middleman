@@ -1,0 +1,8 @@
+[package]
+name = "creation-dream/middleman"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+include = ["src", "LICENSE", "default.prokect.json"]
+
+[dependencies]
