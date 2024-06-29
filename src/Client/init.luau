@@ -46,13 +46,19 @@ function Client.start()
 end
 
 -- Adds a listening callback to a event
-function Client.listen(name: string, callback: ListenCallback)
+function Client.listen(name: string, callback: ListenCallback): number
   if not listening[name] then listening[name] = {} end
   table.insert(listening[name], callback)
+  return #listening[name]
+end
+
+-- Removes one listening callback based on id
+function Client.stopListening(name: string, id: number)
+  listening[name][id] = nil
 end
 
 -- Removes all listening callbacks to a name
-function Client.stopListening(name: string)
+function Client.stopAllListening(name: string)
   listening[name] = nil
 end
 

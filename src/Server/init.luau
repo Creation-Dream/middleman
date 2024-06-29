@@ -57,10 +57,16 @@ end
 function Server.listen(name: string, callback: ListenCallback)
   if not listening[name] then listening[name] = {} end
   table.insert(listening[name], callback)
+  return #listening[name]
+end
+
+-- Stops listenings of one callback via id
+function Server.stopListening(name: string, id: number)
+  listening[name][id] = nil
 end
 
 -- Stops all listening to a event
-function Server.stopListening(name: string)
+function Server.stopAllListening(name: string)
   listening[name] = nil
 end
 
