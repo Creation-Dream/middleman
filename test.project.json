@@ -6,9 +6,6 @@
       "$className": "ReplicatedStorage",
       "Middleman": {
         "$path": "src"
-      },
-      "Packages": {
-        "$path": "Packages"
       }
     },
 
