@@ -1,6 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Middleman = require(ReplicatedStorage.Middleman)
+local Middleman = require(ReplicatedStorage.Middleman).Client
 
 Middleman.start()
 
