@@ -7,6 +7,7 @@ Starting the client and server modules for middleman is a very important step as
 ## Server-Side Setup
 Put this in any server sided script, preferably at the top.
 ```luau
+-- You can directly reference the server module, but it's not reccommended
 local Middleman = require(path.to.module).Server -- Replace path.to.module with the path to the module 
 Middleman.start()
 ```
