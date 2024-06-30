@@ -1,3 +1,5 @@
+wait(5)
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Middleman = require(ReplicatedStorage.Middleman).Server
