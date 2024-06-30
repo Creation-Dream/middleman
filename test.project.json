@@ -28,12 +28,12 @@
     "Workspace": {
       "$className": "Workspace",
       "Baseplate": {
-        "$className": "Part"
+        "$className": "Part",
         "$properties": {
           "Anchored": true,
           "Size": {"Vector3": [30, 1, 30]},
           "Material": {"Enum": 512},
-          "Color": {"Color3": [.6, .3, 0]}
+          "Color": {"Color3": [0.6, 0.3, 0]}
         }
       },
 

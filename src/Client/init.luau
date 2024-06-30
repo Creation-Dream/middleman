@@ -38,7 +38,7 @@ function Client.start()
   
   -- Connects new remote events
   remoteEventFolder.ChildAdded:Connect(function(remoteEvent)
-    if not remoteEvent:IsA("RemoteEvent") then return end
+    if not remoteEvent:IsA("RemoteEvent") and not remoteEvent:IsA("UnreliableRemoteEvent") then return end
     remoteEvent.OnClientEvent:Connect(function(...) 
       remoteEventCalled(remoteEvent.Name, ...)
     end)
