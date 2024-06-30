@@ -44,6 +44,7 @@ end
 -- Creates remote events.
 function Server.register(names: {string})
   for _, name in ipairs(names) do
+    if remoteEventFolder:FindFirstChild(name) then error("Event "..name.." already exists.") end
     local newRemote = Instance.new("RemoteEvent")
 
     newRemote.Name = name
@@ -56,6 +57,7 @@ end
 -- Creates unreliable remote events.
 function Server.registerUnreliable(names: {string})
   for _, name in ipairs(names) do
+    if remoteEventFolder:FindFirstChild(name) then error("Event "..name.." already exists.") end
     local newRemote = Instance.new("UnreliableRemoteEvent")
 
     newRemote.Name = name
