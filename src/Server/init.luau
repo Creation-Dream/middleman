@@ -26,7 +26,7 @@ local Server = {}
 function Server.start()
   -- Connects existing remote events
   for _, remoteEvent in ipairs(remoteEventFolder:GetChildren()) do
-    if not remoteEvent:IsA("RemoteEvent") then return end
+    if not (remoteEvent:IsA("RemoteEvent") or remoteEvent:IsA("UnreliableRemoteEvent")) then return end
     remoteEvent.OnServerEvent:Connect(function(player: Player, ...) 
       remoteEventCalled(remoteEvent.Name, player, ...)
     end)
@@ -34,7 +34,7 @@ function Server.start()
   
   -- Connects new remote events
   remoteEventFolder.ChildAdded:Connect(function(remoteEvent)
-    if not remoteEvent:IsA("RemoteEvent") then return end
+    if not (remoteEvent:IsA("RemoteEvent") or remoteEvent:IsA("UnreliableRemoteEvent")) then return end
     remoteEvent.OnServerEvent:Connect(function(player: Player, ...) 
       remoteEventCalled(remoteEvent.Name, player, ...)
     end)
@@ -45,6 +45,18 @@ end
 function Server.register(names: {string})
   for _, name in ipairs(names) do
     local newRemote = Instance.new("RemoteEvent")
+
+    newRemote.Name = name
+    newRemote.Parent = remoteEventFolder
+
+    print(newRemote)
+  end
+end
+
+-- Creates unreliable remote events.
+function Server.registerUnreliable(names: {string})
+  for _, name in ipairs(names) do
+    local newRemote = Instance.new("UnreliableRemoteEvent")
 
     newRemote.Name = name
     newRemote.Parent = remoteEventFolder

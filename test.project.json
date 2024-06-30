@@ -23,6 +23,29 @@
           "$path": "test/client"
         }
       }
+    },
+
+    "Workspace": {
+      "$className": "Workspace",
+      "Baseplate": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Size": {"Vector3": [200, 1, 200]},
+          "Material": {"Enum": 512},
+          "Color": {"Color3": [0.6, 0.3, 0]}
+        }
+      },
+
+      "Spawn": {
+        "$className": "SpawnLocation",
+        "$properties": {
+          "Anchored": true,
+          "Position": {"Vector3": [0, 0.5, 0]},
+          "Transparency": 1,
+          "CanCollide": false
+        }
+      }
     }
   }
 }
