@@ -5,6 +5,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 -- Dictionary which eventname = {Callbacks}
 local listening = {}
 
+local Server = {}
+
 -- Folder containing all remote events.
 local remoteEventFolder = Instance.new("Folder")
 
@@ -17,11 +19,11 @@ end
 
 local function remoteEventCalled(name: string, player: Player, ...)
   for _, callback in ipairs(listening[name]) do
-    callback(player, ...)
+    local returns = callback(player, ...)
+    if not returns then continue end
+    Server.ask(name, player, unpack(returns))
   end
 end
-
-local Server = {}
 
 function Server.start()
   -- Connects existing remote events
