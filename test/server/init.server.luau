@@ -6,7 +6,7 @@ local Middleman = require(ReplicatedStorage.Middleman).Server
 
 Middleman.start()
 
-Middleman.registerUnreliable({"Test"})
+Middleman.register({"Test"})
 
 Middleman.listen("Test", function(player, arg1)
   print(player.Name.." said arg 1 is "..arg1)
