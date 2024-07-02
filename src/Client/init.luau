@@ -1,4 +1,4 @@
-export type ListenCallback = (...any) -> nil
+export type ListenCallback = (...any) -> {}?
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -7,6 +7,8 @@ local listening = {}
 
 -- A folder containing all the RemoteEvents
 local remoteEventFolder: Folder = ReplicatedStorage:WaitForChild("MiddlemanEvents")
+
+local Client = {}
 
 -- Gets the RemoteEvent from a event name
 function getRemoteEvent(name: string): RemoteEvent
@@ -20,11 +22,11 @@ function remoteEventCalled(name: string, ...)
   end
 
   for _, callback in ipairs(listening[name]) do
-    callback(...)
+    local returns = callback(...)
+    if not returns then continue end
+    Client.ask(name, unpack(returns))
   end
 end
-
-local Client = {}
 
 -- Starts the client listening process
 function Client.start()

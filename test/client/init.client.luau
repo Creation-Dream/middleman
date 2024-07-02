@@ -8,9 +8,5 @@ Middleman.start()
 
 Middleman.listen("Test", function(arg1)
   print("Server said arg 1 is "..arg1)
+  return {"testingarg1"}
 end)
-
-task.wait(5)
-
-
-Middleman.ask("Test", "testingarg1")
